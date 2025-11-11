@@ -1,0 +1,86 @@
+﻿<Window x:Class="Bai6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bai6"
+        mc:Ignorable="d"
+        Title="Calculator"
+         Height="460" Width="610"
+        ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="largeBtn" TargetType="Button">
+            <Setter Property="Width" Value="130"></Setter>
+            <Setter Property="Background" Value="#fff"></Setter>
+            <Setter Property="Margin" Value="0,0,25,0"></Setter>
+            <Setter Property="Foreground" Value="Red"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+
+        <Style x:Key="smallBtn" TargetType="Button">
+            <Setter Property="Width" Value="80"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="Background" Value="#fff"></Setter>
+            <Setter Property="Margin" Value="0,0,10,0"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="Foreground" Value="Blue"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#ECE9D8">
+        <StackPanel>
+            <Menu Background="#e1e1e1">
+                <MenuItem Header="Edit"></MenuItem>
+                <MenuItem Header="View"></MenuItem>
+                <MenuItem Header="Help"></MenuItem>
+            </Menu>
+            <TextBox HorizontalContentAlignment="Right" Margin="10,20,10,20" Height="50" VerticalContentAlignment="Center" FontSize="24" x:Name="monitor" Text="{Binding StringDs, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
+
+            <StackPanel Orientation="Horizontal" Margin="10,20,10,20">
+                <Border BorderBrush="Black" BorderThickness="1"  Margin="0,0,0,0" Width="89">
+                    <TextBlock  Height="30" Margin="0,0,100,0"></TextBlock>
+                </Border>
+                <StackPanel Orientation="Horizontal" Margin="40,0,0,0">
+                    <Button Style="{StaticResource largeBtn}" Content="Backspace" Click="btn_Click" />
+                    <Button Style="{StaticResource largeBtn}" Content="CE" Click="btn_Click"/>
+                    <Button Style="{StaticResource largeBtn}" Content="c" Click="btn_Click"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10,5,10,20">
+                <Button Style="{StaticResource smallBtn}" Margin="0,0,50,0" Foreground="Red" >MC</Button>
+                <Button Style="{StaticResource smallBtn}" Click="btn_Click">7</Button>
+                <Button Style="{StaticResource smallBtn}" Click="btn_Click">8</Button>
+                <Button Style="{StaticResource smallBtn}" Click="btn_Click">9</Button>
+                <Button Style="{StaticResource smallBtn}" Foreground="Red" Click="btn_Click">/</Button>
+                <Button Style="{StaticResource smallBtn}"  Click="btn_Click">sqrt</Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10,5,10,20">
+                <Button Style="{StaticResource smallBtn}" Margin="0,0,50,0" Foreground="Red" >MR</Button>
+                <Button Style="{StaticResource smallBtn}" Click="btn_Click">4</Button>
+                <Button Style="{StaticResource smallBtn}" Click="btn_Click">5</Button>
+                <Button Style="{StaticResource smallBtn}" Click="btn_Click">6</Button>
+                <Button Style="{StaticResource smallBtn}" Foreground="Red" Click="btn_Click">*</Button>
+                <Button Style="{StaticResource smallBtn}" Click="btn_Click">%</Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10,5,10,20">
+                <Button Style="{StaticResource smallBtn}" Margin="0,0,50,0" Foreground="Red">MS</Button>
+                <Button Style="{StaticResource smallBtn}" Click="btn_Click">1</Button>
+                <Button Style="{StaticResource smallBtn}" Click="btn_Click">2</Button>
+                <Button Style="{StaticResource smallBtn}" Click="btn_Click">3</Button>
+                <Button Style="{StaticResource smallBtn}" Foreground="Red" Click="btn_Click">-</Button>
+                <Button Style="{StaticResource smallBtn}"  Click="btn_Click">1/x</Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10,5,10,20">
+                <Button Style="{StaticResource smallBtn}" Margin="0,0,50,0" Foreground="Red" >M+</Button>
+                <Button Style="{StaticResource smallBtn}" Click="btn_Click">0</Button>
+                <Button Style="{StaticResource smallBtn}" Click="btn_Click">+/-</Button>
+                <Button Style="{StaticResource smallBtn}"  Click="btn_Click">.</Button>
+                <Button Style="{StaticResource smallBtn}" Foreground="Red" Click="btn_Click">+</Button>
+                <Button Style="{StaticResource smallBtn}" Foreground="Red" Click="Equals_Click">=</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

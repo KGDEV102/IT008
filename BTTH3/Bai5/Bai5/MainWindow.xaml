@@ -1,0 +1,41 @@
+﻿<Window x:Class="Bai5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bai5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="40"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Margin" Value="0,0,40,0"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock  VerticalAlignment="Center" FontSize="16" >Number 1</TextBlock>
+                <TextBox Width="200" Height="25" Margin="10,0,0,0" VerticalContentAlignment="Center" x:Name="Number_1" Text="{Binding Number1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                <TextBlock  VerticalAlignment="Center" FontSize="16">Number 2</TextBlock>
+                <TextBox Width="200" Height="25" Margin="10,0,0,0" VerticalContentAlignment="Center"  x:Name="Number_2" Text="{Binding Number2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"  Margin="0,30,0,0" >
+                <Button Click="add">+</Button>
+                <Button Click="sub">-</Button>
+                <Button Click="multiply">x</Button>
+                <Button Click="divide">/</Button>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+                <TextBlock  VerticalAlignment="Center" FontSize="16">Answer</TextBlock>
+                <TextBox Width="220" Height="25" Margin="10,0,0,0" VerticalContentAlignment="Center" x:Name="res" IsReadOnly="True" Text="{Binding Ans, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
