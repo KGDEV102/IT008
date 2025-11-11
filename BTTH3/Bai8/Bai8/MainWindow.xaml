@@ -1,0 +1,69 @@
+﻿<Window x:Class="Bai8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Quản lý tài khoản" Height="500" Width="700">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Tiêu đề -->
+        <TextBlock Text="QUẢN LÝ THÔNG TIN TÀI KHOẢN"
+                   HorizontalAlignment="Center" 
+                   FontSize="40" 
+                   Foreground="Blue"
+                   Margin="0,10,0,20"/>
+
+        <!-- Form nhập -->
+        <Grid Grid.Row="1" Margin="50,0,50,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Số tài khoản" VerticalAlignment="Center"/>
+            <TextBox   x:Name="SoTaiKhoanTextBox" Grid.Column="1" Margin="10,5" Text="{Binding SoTaiKhoan,UpdateSourceTrigger=PropertyChanged}" />
+
+            <TextBlock   Grid.Row="1" Text="Tên khách hàng" VerticalAlignment="Center"/>
+            <TextBox x:Name="TenKhachHangTextBox" Grid.Row="1" Grid.Column="1" Margin="10,5" Text="{Binding TenKhachHang,UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Grid.Row="2" Text="Địa chỉ khách hàng" VerticalAlignment="Center"/>
+            <TextBox  x:Name="DiaChiTextBox" Grid.Row="2" Grid.Column="1" Margin="10,5" Text="{Binding DiaChi,UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Grid.Row="3" Text="Số tiền trong tài khoản" VerticalAlignment="Center"/>
+            <TextBox  x:Name="SoTienTextBox" Grid.Row="3" Grid.Column="1" Margin="10,5" Text="{Binding SoTien,UpdateSourceTrigger=PropertyChanged}"/>
+
+            <!-- Buttons -->
+            <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="230  ,20,0,0">
+                <Button Width="120" Margin="10,0" Click="addBtn_Click">Thêm / Cập Nhật</Button>
+                <Button Width="80" Margin="10,0" Click="deleteBtn_Click">Xóa</Button>
+                <Button Width="80" Margin="10,0" Click="endProgram_Click">Thoát</Button>
+            </StackPanel>
+        </Grid>
+
+        <DataGrid x:Name="myDataGrid" Grid.Row="2" Margin="0,10,0,0" AutoGenerateColumns="False" SelectionChanged="myDataGrid_SelectionChanged" Height="250">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="STT" Width="50" Binding="{Binding STT}" />
+                <DataGridTextColumn Header="Mã tài khoản" Width="150" Binding="{Binding MaTaiKhoan}" />
+                <DataGridTextColumn Header="Tên khách hàng" Width="180" Binding="{Binding TenKhachHang}" />
+                <DataGridTextColumn Header="Địa chỉ" Width="200" Binding="{Binding DiaChi}" />
+                <DataGridTextColumn Header="Số tiền" Width="100" Binding="{Binding SoTien}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock>Tổng tiền</TextBlock>
+            <TextBox Width="200" Height="20" Text="{Binding ToTal,UpdateSourceTrigger=PropertyChanged}" TextChanged="TextBox_TextChanged"></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>
