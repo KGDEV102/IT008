@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Bai_5
+{
+    public partial class formAdd : Form
+    {
+        public formAdd()
+        {
+            InitializeComponent();
+            khoa_text.Items.Add("Công nghệ thông tin");
+            khoa_text.Items.Add("Công nghệ phần mềm");
+        }
+        string khoa;
+        public class SinhVien
+        {
+            public string MaSoSinhVien { get; set; }
+            public string TenSinhVien { get; set; }
+            public string Khoa { get; set; }
+            public double DiemTB { get; set; }
+           
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            khoa = khoa_text.SelectedItem.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SinhVien svMoi = new SinhVien
+            {
+                MaSoSinhVien = mssv_text.Text,
+                TenSinhVien = name_text.Text,
+                Khoa = khoa,
+                DiemTB = double.Parse(dtb_text.Text)
+            };
+        }
+    }
+}

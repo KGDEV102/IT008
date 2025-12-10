@@ -1,0 +1,42 @@
+﻿namespace Bai_5
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            using (formAdd form = new formAdd())
+            {
+                if (form.ShowDialog() == DialogResult.OK && form.NewSinhVien != null)
+                {
+                    var sv = form.NewSinhVien;
+                    int stt = dataGridView1.Rows.Count + 1;
+                    dataGridView1.Rows.Add(stt, sv.MaSoSinhVien, sv.TenSinhVien, sv.Khoa, sv.DiemTB);
+                }
+            }
+        }
+
+        private void thêmMớiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (formAdd form = new formAdd())
+            {
+                if (form.ShowDialog() == DialogResult.OK && form.NewSinhVien != null)
+                {
+                    var sv = form.NewSinhVien;
+                    int stt = dataGridView1.Rows.Count + 1;
+                    dataGridView1.Rows.Add(stt, sv.MaSoSinhVien, sv.TenSinhVien, sv.Khoa, sv.DiemTB);
+                }
+            }
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+    }
+}

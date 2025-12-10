@@ -1,0 +1,73 @@
+﻿using System.ComponentModel;
+
+namespace Bai_5
+{
+    public partial class Form1 : Form,INotifyPropertyChanged
+    {
+        public Form1()
+        {
+            InitializeComponent();
+            dataGridView1.AllowUserToAddRows = false;
+
+        }
+        private string timkiem;
+
+        // Exposed property with change notification
+        public string TimKiem
+        {
+            get => timkiem;
+            set
+            {
+                if (timkiem != value)
+                {
+                    timkiem = value;
+                    OnPropertyChanged(nameof(TimKiem));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            using (formAdd form = new formAdd())
+            {
+                if (form.ShowDialog() == DialogResult.OK && form.NewSinhVien != null)
+                {
+                    var sv = form.NewSinhVien;
+                    int stt = dataGridView1.Rows.Count + 1;
+                    dataGridView1.Rows.Add(stt, sv.MaSoSinhVien, sv.TenSinhVien, sv.Khoa, sv.DiemTB);
+                }
+            }
+        }
+
+        private void thêmMớiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (formAdd form = new formAdd())
+            {
+                if (form.ShowDialog() == DialogResult.OK && form.NewSinhVien != null)
+                {
+                    var sv = form.NewSinhVien;
+                    int stt = dataGridView1.Rows.Count + 1;
+                    dataGridView1.Rows.Add(stt, sv.MaSoSinhVien, sv.TenSinhVien, sv.Khoa, sv.DiemTB);
+                }
+            }
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void toolStripTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
